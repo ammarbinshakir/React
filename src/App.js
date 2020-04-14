@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import UsersTableComponent from "./Components/UsersTableComponent";
+import UserForm from "./Components/UserForm";
+import NavbarComponent from "./Components/NavbarComponent";
+import UserDetailComponent from "./Components/UserDetailComponent";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+// import HomeComponent from "./Components/HomeComponent";
+// import {useForm} from "react-hook-form";
 
 function App() {
   return (
+      <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <NavbarComponent/>
+    <Switch>
+      <Route path="/" exact component={UsersTableComponent} />
+      <Route path="/userform" component={UserForm} />
+    <Route path="/usertable" component={UsersTableComponent}/>
+    <Route path="/userdetail" component={UserDetailComponent}/>
+    <Route path="/userform/:id" component={UserForm}/>
+    <Route path="/userdetail/:id" component={UserDetailComponent}/>
+    </Switch>
     </div>
+      </Router>
   );
 }
 
